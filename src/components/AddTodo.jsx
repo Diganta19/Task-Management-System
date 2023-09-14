@@ -30,7 +30,7 @@ const AddTodo = ({addTodo}) => {
 <label htmlFor="title" >Todo Title</label>
 <input type="text" onChange={handelTitleChange}  id="title"  />
 </div>
-<div className="mb-3">
+<div >
 <label htmlFor="desc" >Description</label>
 <input type="text" onChange={handelDescChange}  id="desc"/>
 </div>
