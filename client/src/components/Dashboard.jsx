@@ -1,52 +1,50 @@
 
-import { useEffect, useState } from 'react';
-import AddTodo from './AddTodo'
+import axios from 'axios';
+import { useState } from 'react';
 import Todos from './Todos'
 
+// import Todos from './Todos'
+import { useParams } from 'react-router';
+
 const Dashboard = () => {
-  let initTodo;
-  if(localStorage.getItem("todos")===null){
-    initTodo = [];
-  }else{
-    initTodo = JSON.parse(localStorage.getItem('todos'));
-  }
-    
-  const [todos,setTodos] = useState(initTodo);
-  const addTodo = (title,desc)=>{
-    
-    let sno;
-    if(todos.length===0){
-      sno = 1;
-    }else{
-    sno = todos[todos.length-1].sno+1;
+  const {id} = useParams();
+      const [values,setValues] =useState({
+        uid:id,
+        title:'',
+        des:'',
+      }) 
+
+      const handelInput =(e)=>{
+        setValues(prev =>({...prev,[e.target.name]:[e.target.value]}))
+      }
+
+    const backendHandel = async(values) =>{
+     axios.post('http://localhost:5000/addTodo',values).then(res => console.log(res)).catch(err => console.log(err))
+   }
+
+
+    const handelSubmit = (e) =>{
+      e.preventDefault();
+      backendHandel(values);
     }
-    const myTodo = {
-      sno:sno,
-      title:title,
-      desc:desc,
-    }
-
-    setTodos([...todos,myTodo]);
-  }
 
 
-  
-  const onDelete=(todo)=>{
-   
-    setTodos(todos.filter((e)=>{
-        return e!==todo;
-    }));
-    localStorage.setItem("todos",JSON.stringify(todos));
-  }
-
-  
-  useEffect(()=>{
-    localStorage.setItem("todos",JSON.stringify(todos));
-  },[todos])
   return (
     <>
-      <AddTodo addTodo = {addTodo}></AddTodo>
-      <Todos todos={todos} onDelete={onDelete}/>
+      <h3>Add a Todo</h3>
+   <form onSubmit={handelSubmit}>
+      <div >
+      <label htmlFor="title" >Todo Title</label>
+      <input type="text"  name="title" onChange={handelInput}  id="title"  />
+      </div>
+      <div >
+      <label htmlFor="des" >Description</label>
+      <input type="text" name="des"  onChange={handelInput}  id="desc"/>
+      </div>
+      <button type="submit">Add Todo</button>
+    </form>
+      
+       <Todos /> 
     </>
   )
 }

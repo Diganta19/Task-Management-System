@@ -47,6 +47,36 @@ app.post('/login',(req,res)=>{
 
 })
 
+app.post("/addTodo",(req,res)=>{
+    const sql = "INSERT INTO todo (`uid`,`title`,`des`) VALUES (?)"
+    const values = [
+        req.body.uid,
+        req.body.title,
+        req.body.des,
+    ]
+    console.log(values);
+    db.query(sql,[values],(err,data)=>{
+        if(err){
+            return res.json(err)
+        }else{
+            return res.json(data);
+        }
+    })
+})
+
+app.post('/todo',(req,res)=>{
+    const sql = "SELECT * FROM todo WHERE `uid` =  ?"
+    const uid = req.body.uid;
+    console.log(uid);
+     db.query(sql,uid,(err,data)=>{
+        if(err){
+            return res.send(err)
+        }else{
+            return res.send(JSON.stringify(data))
+        }
+    })
+})
+
 app.get("/",(req,res)=>{
     res.send('Hello');
 })
