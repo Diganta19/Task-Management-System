@@ -1,10 +1,12 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+//app.use(express.json());
+app.use(bodyParser.json());
 
 const db = mysql.createConnection({
     host:'localhost',
@@ -64,18 +66,17 @@ app.post("/addTodo",(req,res)=>{
     })
 })
 
-app.post('/todo',(req,res)=>{
-    const sql = "SELECT * FROM todo WHERE `uid` =  ?"
-    const uid = req.body.uid;
-    console.log(uid);
-     db.query(sql,uid,(err,data)=>{
-        if(err){
-            return res.send(err)
+app.post("/todos/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM todo WHERE `uid` = ?";
+    db.query(sql,[id],(e,d)=>{
+        if(e){
+            return res.json(e);
         }else{
-            return res.send(JSON.stringify(data))
+            return res.send(JSON.stringify(d));
         }
     })
-})
+  });
 
 app.get("/",(req,res)=>{
     res.send('Hello');
