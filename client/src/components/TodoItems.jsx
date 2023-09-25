@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 
 
-const TodoItems = ({todo}) => {
+const TodoItems = ({d}) => {
+ 
   return (
-    <>
-      <h4>{todo.title}</h4>
-      <p>{todo.desc}</p>
-      <button  className="btn btn-sm btn-danger" >Delete</button>
-      <hr/>
-    </>
+  <>
+    <h3>{d.title}</h3>
+    <h4>{d.des}</h4>
+    <hr/>
+  </>
   )
 }
 

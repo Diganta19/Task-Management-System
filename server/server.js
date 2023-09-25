@@ -78,6 +78,38 @@ app.post("/todos/:id", (req, res) => {
     })
   });
 
+  app.delete('/todos/:sno', (req, res) => {
+    const sno = req.params.sno;
+  
+    // Your SQL query to delete the todo item with the given ID
+    const sql = 'DELETE FROM todo WHERE `sno` = ?';
+  
+    db.query(sql, [sno], (error, result) => {
+      if (error) {
+        console.error('Error deleting todo:', error);
+        return res.status(500).json({ error: 'Error deleting todo' });
+      }
+  
+      // Successful deletion
+      return res.json({ message: 'Todo deleted successfully' });
+    });
+  });
+
+
+  app.post('/admindash',(req,res)=>{
+    const sql = "SELECT * FROM todo";
+    db.query(sql,(err,data) =>{
+        if(err){
+            return res.json(err);
+        }else{
+            return res.json(data);
+        }
+    })
+  })
+  
+
+
+
 app.get("/",(req,res)=>{
     res.send('Hello');
 })

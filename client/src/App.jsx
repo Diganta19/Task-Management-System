@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/signup" element={<Signup/>}/>
        <Route exact path="/dash/:id" element={<PrivateRouter isSigned={isSigned}><Dashboard/></PrivateRouter>}/>
        <Route exact path="/login" element={<Login/>}/>
-       <Route exact path="/admin" element={<AdminLogin/>}/>
+       <Route  path="/admin" element={<AdminLogin/>}/>
        <Route exact path="/admindash" element={<PrivateRouter isSigned={isAdminSigned}><AdminDash/></PrivateRouter>}/>
      </Routes>
     </BrowserRouter>

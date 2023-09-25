@@ -8,29 +8,38 @@ import axios from 'axios';
 
 
 
-const Todos = () => {
-
-    const [todos,setTodos] = useState([]);
-    const {id} = useParams();
-    //console.log(id);
+const  Todos = ({data}) => {
+ 
+ 
     
 
-    const backendHandle = async (id) => {
-      axios.post(`http://localhost:5000/todos/${id}`).then(res => setTodos(res.data))
-    }
-   useEffect(()=>{
-    backendHandle(id);
-   },[id])
+   
+  //  const onDelete = async (sno) => {
+  //   try {
+  //     const response = await axios.delete(`http://localhost:5000/todos/${sno}`);
+  //     if (response.status === 200) {
+     
+  //       console.log('Todo deleted successfully');
+  //       setTodo((prevTodos) => prevTodos.filter((todo) => todo.sno !== sno));
+  //     } else {
+  //       console.error('Error deleting todo:', response.data.error);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting todo:', error);
+  //   }
+  // };
+
+
+  
 
   return (
-    <div>
-    {todos.length === 0 ? "No Todos" : 
-      todos.map((todo,k) => (
-        <TodoItems key ={k} todo={todo}/>
-      ))
-    }
-   
-  </div>
+     <>
+       {
+        data.map((r,i)=>{
+         return( <TodoItems key = {i} d={r}/>)
+        })
+       }
+   </>
   )
 }
 

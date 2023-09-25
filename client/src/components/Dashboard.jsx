@@ -1,10 +1,19 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
 
 import axios from 'axios';
 import { useState } from 'react';
 import Todos from './Todos'
-
-// import Todos from './Todos'
 import { useParams } from 'react-router';
+import { getData } from './Api';
+
+
+const diplayResults = (todos) => {
+
+  return <Todos data={todos}/>
+
+  
+};
 
 const Dashboard = () => {
   const {id} = useParams();
@@ -13,20 +22,30 @@ const Dashboard = () => {
         title:'',
         des:'',
       }) 
+      const [todos,setTodos] = useState([]);
+      
 
       const handelInput =(e)=>{
         setValues(prev =>({...prev,[e.target.name]:[e.target.value]}))
       }
 
-    const backendHandel = async(values) =>{
+    const backendDataHandel = async(values) =>{
      axios.post('http://localhost:5000/addTodo',values).then(res => console.log(res)).catch(err => console.log(err))
    }
 
 
     const handelSubmit = (e) =>{
       e.preventDefault();
-      backendHandel(values);
+      backendDataHandel(values);
     }
+
+
+    const renderResults =()=>{
+        getData(id).then(res=>setTodos(res.data))
+       
+    }
+
+    
 
 
   return (
@@ -44,7 +63,8 @@ const Dashboard = () => {
       <button type="submit">Add Todo</button>
     </form>
       
-       <Todos /> 
+     <button onClick={renderResults}>See Tasks</button>
+    {diplayResults(todos)}
     </>
   )
 }
