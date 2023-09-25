@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
 import { getAdminData } from "./getAdminData";
+import AdminHeader from "./AdminHeader";
 
 
 const AdminDash = () => {
@@ -19,6 +20,7 @@ useEffect(()=>{
 
   return (
     <div>
+      <AdminHeader/>
       <h2>Welcome to Admin Dashboard</h2>
       {data && data.map((d,i)=>{
         return(<>

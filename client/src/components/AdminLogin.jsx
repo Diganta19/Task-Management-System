@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { useState } from 'react';
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Validation from './AdminVerification';
 
 const AdminLogin = () => {
@@ -25,6 +25,7 @@ const AdminLogin = () => {
     e.preventDefault();
     setErrors(Validation(values));
     // if( errors.email === "" && errors.password === "" ){  
+      localStorage.setItem("admin","true");
       navigate("/admindash");
   // }
 }
@@ -43,6 +44,7 @@ const AdminLogin = () => {
 
         
       </form>
+      <Link to="/"><p>Go back to Home Page</p></Link>
     </div>
   )
 }

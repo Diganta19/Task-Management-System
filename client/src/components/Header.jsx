@@ -1,19 +1,22 @@
 
-import { Link, useNavigate } from "react-router-dom";
+
+import { Link,useNavigate } from "react-router-dom";
 
 
 const Header = () => {
   const userAuth = localStorage.getItem("user");
   const navigate = useNavigate();
+  
 
   const logout=()=>{
     localStorage.clear();
     navigate("/login");
   }
   
-    
+ 
 
   return (
+
     <div>
       {userAuth ? <ul>
           <li onClick={logout}>Logout({JSON.parse(userAuth).name})</li>        

@@ -24,6 +24,7 @@ function App() {
       setIsSigned(true);
     }
   },[])
+  
   useEffect(()=>{
     const adminAuth = localStorage.getItem("admin");
     if(adminAuth){

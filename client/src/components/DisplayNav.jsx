@@ -10,10 +10,15 @@ const DisplayNav = ({children}) => {
     useEffect(()=>{
         if(location.pathname === '/'){
             setDisp(false);
+        }else if(location.pathname === '/admindash'){
+            setDisp(false);
+        }else  if(location.pathname === '/admin'){
+          setDisp(false);
         }else{
-            setDisp(true);
+          setDisp(true);
         }
     },[location])
+    
   return (
     <div>
       {disp && children}
