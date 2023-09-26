@@ -14,6 +14,8 @@ const DisplayNav = ({children}) => {
             setDisp(false);
         }else  if(location.pathname === '/admin'){
           setDisp(false);
+        }else if(location.pathname === '/manage'){
+          setDisp(false);
         }else{
           setDisp(true);
         }

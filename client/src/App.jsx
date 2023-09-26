@@ -14,6 +14,8 @@ import Header from "./components/Header";
 import DisplayNav from "./components/DisplayNav";
 import { useEffect, useState } from "react";
 
+import ManageUserTask from "./components/ManageUserTask";
+
 function App() {
   const [isSigned,setIsSigned] = useState(false);
   const [isAdminSigned,setIsAdminSigned] = useState(false);
@@ -44,6 +46,7 @@ function App() {
        <Route exact path="/login" element={<Login/>}/>
        <Route  path="/admin" element={<AdminLogin/>}/>
        <Route exact path="/admindash" element={<PrivateRouter isSigned={isAdminSigned}><AdminDash/></PrivateRouter>}/>
+       <Route exact path="/manage" element={<PrivateRouter isSigned={isAdminSigned}><ManageUserTask /></PrivateRouter>}/>
      </Routes>
     </BrowserRouter>
    
