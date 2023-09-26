@@ -40,17 +40,33 @@ const Signup = () => {
     }
     
     return (
-    <div>
+      <div>
+      <h2 className='display-5'>Signup</h2>
+    <div  className='mt-5 card shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
       <form action='' onSubmit={signupSubmit}>
-        <input placeholder='Name' type ="text" id='name' name='name'  onChange={handelInput}/>
-        {errors.name && <span>{errors.name}</span>}
-        <input placeholder='Email' id='email' name='email' type= "email"  onChange={handelInput}/>
-        {errors.email && <span>{errors.email}</span>}
-        <input placeholder='Password' id='Password' name='password' type="password"  onChange={handelInput}/>
-        {errors.password && <span>{errors.password}</span>}
-        <button type='submit'>Submit</button>
+      <div className="mb-3">
+        <label className='form-label'>Name:</label>
+          <input className='form-control' placeholder='Name' type ="text" id='name' name='name'  onChange={handelInput}/>
+          {errors.name && <span className='form-text'>{errors.name}</span>}
+          </div>
+
+          <div className="mb-3">
+          <label className='form-label'>Email:</label>
+          <input className='form-control' placeholder='Email' id='email' name='email' type= "email"  onChange={handelInput}/>
+          {errors.email && <span className='form-text'>{errors.email}</span>}
+          </div>
+
+          <div className="mb-3">
+          <label className='form-label'>Password:</label>
+          <input  className='form-control' placeholder='Password' id='Password' name='password' type="password"  onChange={handelInput}/>
+          {errors.password && <span className='form-text'>{errors.password}</span>}
+      </div>
+
+      <button className="btn btn-outline-primary btn-lg">Submit</button>
       </form>
     </div>
+    </div>
+
   )
 }
 

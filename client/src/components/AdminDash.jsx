@@ -21,13 +21,27 @@ useEffect(()=>{
   return (
     <div>
       <AdminHeader/>
-      <h2>Welcome to Admin Dashboard</h2>
+      <h2 className='display-5'>Welcome to Admin Dashboard</h2>
+      <table className="table table-striped-columns">
+      <thead>
+    <tr>
+    <th scope="col">User ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+    </tr>
+   </thead>
+   </table>
       {data && data.map((d,i)=>{
         return(<>
-          <h4>{d.title}</h4>
-          <h4>{d.des}</h4>
-          <h4>{d.uid}</h4>
-          <hr/>
+        <table className="table table-striped-columns">
+          <tbody>
+           <tr>
+            <td >{d.uid}</td>
+            <td>{d.title}</td>
+            <td>{d.des}</td>
+          </tr>
+         </tbody>
+        </table>
           </>
         )
       })}

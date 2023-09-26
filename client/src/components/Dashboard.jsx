@@ -50,20 +50,20 @@ const Dashboard = () => {
 
   return (
     <>
-      <h3>Add a Todo</h3>
-   <form onSubmit={handelSubmit}>
-      <div >
-      <label htmlFor="title" >Todo Title</label>
-      <input type="text"  name="title" onChange={handelInput}  id="title"  />
+      <h3 className='display-5'>Add a Todo</h3>
+   <form className='mt-5 card shadow-lg p-3 mb-5 bg-body-tertiary rounded' onSubmit={handelSubmit}>
+      <div className="mb-3">
+      <label  className='form-label' htmlFor="title" >Todo Title</label>
+      <input className='form-control' type="text"  name="title" onChange={handelInput}  id="title"  />
       </div>
-      <div >
-      <label htmlFor="des" >Description</label>
-      <input type="text" name="des"  onChange={handelInput}  id="desc"/>
+      <div className="mb-3">
+      <label  className='form-label'  htmlFor="des" >Description</label>
+      <input className='form-control' type="text" name="des"  onChange={handelInput}  id="desc"/>
       </div>
-      <button type="submit">Add Todo</button>
+      <button className="btn btn-outline-primary btn-lg" type="submit">Add Todo</button>
     </form>
       
-     <button onClick={renderResults}>See Tasks</button>
+     <button className="btn btn-outline-primary btn-lg" onClick={renderResults}>See Tasks</button>
     {diplayResults(todos)}
     </>
   )

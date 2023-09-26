@@ -5,9 +5,16 @@ const TodoItems = ({d}) => {
  
   return (
   <>
-    <h3>{d.title}</h3>
-    <h4>{d.des}</h4>
-    <hr/>
+  <table className="table table-striped-columns">
+  <tbody>
+    <tr>
+   
+      <td>{d.title}</td>
+      <td>{d.des}</td>
+    </tr>
+  </tbody>
+  </table>
+
   </>
   )
 }

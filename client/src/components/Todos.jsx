@@ -33,7 +33,16 @@ const  Todos = ({data}) => {
   
 
   return (
+   
      <>
+     <table className="table table-striped-columns">
+      <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+    </tr>
+   </thead>
+   </table>
        {
         data.map((r,i)=>{
          return( <TodoItems key = {i} d={r}/>)

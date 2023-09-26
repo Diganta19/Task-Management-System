@@ -1,3 +1,4 @@
+import { AppBar, Toolbar } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const AdminHeader = () => {
@@ -9,9 +10,11 @@ const AdminHeader = () => {
     }
 
   return (
-    <div>
-        <button onClick={clearAdmin}>Logout</button>
-    </div>
+    <AppBar className="navbar bg-dark border-bottom border-body" >
+       <Toolbar>
+        <button className="btn btn-outline-primary btn-lg"  onClick={clearAdmin}>Logout</button>
+        </Toolbar>
+    </AppBar>
   )
 }
 
